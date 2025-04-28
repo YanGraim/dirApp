@@ -38,7 +38,6 @@ export default async function Home() {
     <main>
       <h1>Página Home</h1>
       <span>Seja bem vindo à página Home</span>
-      <br /> <hr />
       <h3>Meus repositórios</h3>
       {data.map((repos) => (
         <div key={repos.id}>
