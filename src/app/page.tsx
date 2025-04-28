@@ -15,8 +15,8 @@ interface DataProps {
 
 async function delayFetch(url: string, delay: number) {
   await new Promise((resolve) => setTimeout(resolve, delay));
-  // {cache: "no-store"} => nao gera cache, sempre faz uma nova requisição
-  const response = await fetch(url, { cache: "force-cache" });
+  // faz a requisição de 60 em 60 segundos
+  const response = await fetch(url, { next: { revalidate: 60 } });
   return response.json();
 }
 
