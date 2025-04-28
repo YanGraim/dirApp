@@ -11,10 +11,24 @@ interface DataProps {
   html_url: string;
 }
 
-async function getData() {
-  // https://api.github.com/users/yangraim/repos
-  const response = await fetch("https://api.github.com/users/yangraim/repos");
+async function delayFetch(url: string, delay: number) {
+  await new Promise((resolve) => setTimeout(resolve, delay));
+  const response = await fetch(url);
   return response.json();
+}
+
+// async function getData() {
+//   https://api.github.com/users/yangraim/repos
+//   const response = await fetch("https://api.github.com/users/yangraim/repos");
+//   return response.json();
+// }
+
+async function getData() {
+  const data = await delayFetch(
+    "https://api.github.com/users/yangraim/repos",
+    3500
+  );
+  return data;
 }
 
 export default async function Home() {
